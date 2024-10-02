@@ -16,25 +16,25 @@ function drawLine() {
    context.lineWidth = 5;
    context.fillStyle = 'green';
    context.beginPath();
-   context.rect(70, 70,50,50);
-   context.rect(70, 120,50,50)
-   context.rect(70, 170,50,50)
-   context.rect(120, 120,50,50)
+   context.rect(75, 70,50,50);
+   context.rect(75, 120,50,50)
+   context.rect(75, 170,50,50)
+   context.rect(125, 120,50,50)
    context.fill();
 
    context.lineWidth = 5;
    context.fillStyle = 'green';
    context.beginPath();
-   context.rect(170, 220,50,50);
+   context.rect(175, 220,50,50);
    context.fill();
 
    context.lineWidth = 5;
    context.fillStyle = 'green';
    context.beginPath();
-   context.rect(220, 120,50,50);
-   context.rect(270, 120,50,50);
-   context.rect(270, 170,50,50);
-   context.rect(270, 70,50,50);
+   context.rect(225, 120,50,50);
+   context.rect(275, 120,50,50);
+   context.rect(275, 170,50,50);
+   context.rect(275, 70,50,50);
    context.fill();
    
 }
