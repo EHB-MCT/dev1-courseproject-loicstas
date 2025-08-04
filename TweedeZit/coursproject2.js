@@ -1,9 +1,7 @@
-//eerste opdracht tijdens januari
-
 'use strict';
 
-import context from "./scripts copy/context.js";
-import * as Utils from "./scripts copy/utils.js";
+import context from "../scripts copy/context.js";
+import * as Utils from "../scripts copy/utils.js";
 
 
 let width = context.canvas.width;
@@ -68,8 +66,3 @@ function drawbubble() {
         }
     }
 }
-
-
-
-
-
