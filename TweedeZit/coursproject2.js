@@ -14,7 +14,12 @@ let bubbles = [];
 setup();
 update();
 
+
 function setup() {
+
+    createRectangles();
+    createBorder();
+
     for (let i = 0; i < 5; i++) {
         pushbubble();
     }
@@ -33,6 +38,35 @@ function pushbubble() {
     bubbles.push(bubble);
 }
 
+function createRectangles() {
+    let rect1 = {
+        rectX: width / 20,
+        rectY: 10,
+        rectWidth: 10,
+        rectHeight: 100,
+        rectSpeed: 10,
+    };
+
+     rectangles.push(rect1);
+
+    let rect2 = {
+        rectX:  (width / 20) * 19 - 10 , 
+        rectY: 10,
+        rectWidth: 10,
+        rectHeight: 100,
+    };
+    rectangles.push(rect2);
+}
+
+function createBorder() { 
+  let border = { 
+    rectX: 20,
+    rectY: 20,
+    rectWidth: width - 40,
+    rectHeight: height - 40,
+    }; 
+    borderRectangles.push(border);
+}
 
 
 function update() {
@@ -40,6 +74,7 @@ function update() {
     context.fillRect(0, 0, width, height);
 
     drawbubble();
+    
 
     requestAnimationFrame(update);
 }
@@ -66,3 +101,4 @@ function drawbubble() {
         }
     }
 }
+
