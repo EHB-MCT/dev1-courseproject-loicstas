@@ -9,6 +9,7 @@ let height = context.canvas.height;
 
 let bubbles = [];
 
+
 setup();
 update();
 
@@ -72,6 +73,7 @@ function update() {
     context.fillRect(0, 0, width, height);
 
     drawbubble();
+    drawBorder();
     createLineCircleText();
     
 
@@ -112,6 +114,18 @@ function drawbubble() {
                bubble.hSpeed *= -1;
             }
         }
+    }
+}
+
+function drawBorder() { 
+    
+    for (let i = 0; i < borderRectangles.length; i++) {
+        let border = borderRectangles[i];
+
+        context.strokeStyle = "darkgreen";
+        context.lineWidth = 5; 
+        
+        context.strokeRect(border.rectX, border.rectY, border.rectWidth, border.rectHeight);
     }
 }
 
