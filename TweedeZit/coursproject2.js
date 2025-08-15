@@ -4,24 +4,27 @@ import context from "../scripts copy/context.js";
 import * as Utils from "../scripts copy/utils.js";
 
 
+
 let width = context.canvas.width;
 let height = context.canvas.height;
 
 let bubbles = [];
+let rectangles = []; 
+let borderRectangles = [];
 
+//document.onmousedown = move;
 document.onmousemove = move;
-
 
 setup();
 update();
-
 
 function setup() {
 
     createRectangles();
     createBorder();
+   
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 2; i++) {
         pushbubble();
     }
   
@@ -29,12 +32,17 @@ function setup() {
 
 function pushbubble() {
 
+    const border = borderRectangles[0]; // Haal het kader op
+    const bubbleSize = 10;
+
+    const randomY = border.rectY + bubbleSize + Math.random() * (border.rectHeight - bubbleSize * 2);
+
     let bubble = {
-        size: 10,
+        size: bubbleSize,
         x: width / 2,
-        y: height / 2,
-        hSpeed:  Math.random() * 10,    
-        vSpeed: Math.random() * 10,
+        y: randomY, 
+        hSpeed:  7,    
+        vSpeed: 7,
     };
     bubbles.push(bubble);
 }
@@ -47,8 +55,8 @@ function createRectangles() {
         rectHeight: 100,
         rectSpeed: 10,
     };
-
-     rectangles.push(rect1);
+	
+    rectangles.push(rect1);
 
     let rect2 = {
         rectX:  (width / 20) * 19 - 10 , 
@@ -69,17 +77,14 @@ function createBorder() {
     borderRectangles.push(border);
 }
 
-
 function update() {
-
-    context.fillStyle = "white";
+    context.fillStyle = "black";
     context.fillRect(0, 0, width, height);
-
-    drawbubble();
-    drawBorder();
+    
     updateAndDrawRectangles();
     createLineCircleText();
-    
+    drawBorder();
+    drawbubble();
 
     requestAnimationFrame(update);
 }
@@ -121,19 +126,6 @@ function drawbubble() {
     }
 }
 
-function drawBorder() { 
-    
-    for (let i = 0; i < borderRectangles.length; i++) {
-        let border = borderRectangles[i];
-
-        context.strokeStyle = "darkgreen";
-        context.lineWidth = 5; 
-        
-        context.strokeRect(border.rectX, border.rectY, border.rectWidth, border.rectHeight);
-    }
-}
-
-
 /**
  * 
  * @param {MouseEvent} e 
@@ -146,6 +138,7 @@ function move(e) {
     rightRectangle.rectY = e.clientY - rightRectangle.rectHeight / 2;
 
 }
+
 
 function updateAndDrawRectangles() {
     const border = borderRectangles[0];
@@ -166,6 +159,18 @@ function updateAndDrawRectangles() {
             }
         }
         
+    }
+}
+
+function drawBorder() { 
+    
+    for (let i = 0; i < borderRectangles.length; i++) {
+        let border = borderRectangles[i];
+
+        context.strokeStyle = "darkgreen";
+        context.lineWidth = 5; 
+        
+        context.strokeRect(border.rectX, border.rectY, border.rectWidth, border.rectHeight);
     }
 }
 
