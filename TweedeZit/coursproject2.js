@@ -9,6 +9,8 @@ let height = context.canvas.height;
 
 let bubbles = [];
 
+document.onmousemove = move;
+
 
 setup();
 update();
@@ -69,11 +71,13 @@ function createBorder() {
 
 
 function update() {
+
     context.fillStyle = "white";
     context.fillRect(0, 0, width, height);
 
     drawbubble();
     drawBorder();
+    updateAndDrawRectangles();
     createLineCircleText();
     
 
@@ -126,6 +130,42 @@ function drawBorder() {
         context.lineWidth = 5; 
         
         context.strokeRect(border.rectX, border.rectY, border.rectWidth, border.rectHeight);
+    }
+}
+
+
+/**
+ * 
+ * @param {MouseEvent} e 
+ */
+
+function move(e) {
+    // const border = borderRectangles[0]; 
+
+    let rightRectangle = rectangles[1];
+    rightRectangle.rectY = e.clientY - rightRectangle.rectHeight / 2;
+
+}
+
+function updateAndDrawRectangles() {
+    const border = borderRectangles[0];
+
+    for (let i = 0; i < rectangles.length; i++) {
+        let rect = rectangles[i];
+
+        context.fillStyle = 'darkgreen';
+        context.fillRect(rect.rectX, rect.rectY, rect.rectWidth, rect.rectHeight);
+        
+        if (i == 0) { 
+            rect.rectY += rect.rectSpeed;
+
+            if (rect.rectY < border.rectY || rect.rectY + rect.rectHeight > border.rectY + 
+                border.rectHeight) {
+                
+                rect.rectSpeed *= -1;
+            }
+        }
+        
     }
 }
 
