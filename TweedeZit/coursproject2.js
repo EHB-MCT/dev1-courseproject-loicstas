@@ -3,7 +3,7 @@
 import context from "../scripts copy/context.js";
 import * as Utils from "../scripts copy/utils.js";
 
-
+import spacevader2 from "../TweedeZit/spacelvader2.js"; 
 
 let width = context.canvas.width;
 let height = context.canvas.height;
@@ -19,7 +19,6 @@ setup();
 update();
 
 function setup() {
-
     createRectangles();
     createBorder();
    
@@ -85,6 +84,7 @@ function update() {
     createLineCircleText();
     drawBorder();
     drawbubble();
+    space();
 
     requestAnimationFrame(update);
 }
@@ -200,5 +200,28 @@ function createLineCircleText(){
     context.textBaseline = "middle";
 
     context.fillText("loïc stas", width / 2, height / 2);
+
+}
+
+function space(){ 
+
+    context.save(); 
+
+    const patternTotalWidth = 350; 
+    const patternTotalHeight = 350; 
+    const margin = 20;
+    const scaleFactor = 0.2; 
+
+    const drawX = width - (patternTotalWidth * scaleFactor) - margin;
+    const drawY = height - (patternTotalHeight * scaleFactor) - margin;
+
+    context.translate(drawX, drawY);
+    context.scale(scaleFactor, scaleFactor);
+
+    spacevader2(context);
+
+    context.restore(); 
+   
+
 
 }
