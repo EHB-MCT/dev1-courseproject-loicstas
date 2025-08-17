@@ -1,3 +1,12 @@
+/** 
+ * TAAK KLAAR Loïc Stas
+ * 
+ * Additional code based on:
+ * - spacevader2.js → gebaseerd op mijn opdracht Taak 1, aangepast op 15/08/2025.
+ *
+ * Modifications and integration made by Loïc Stas.
+ */
+
 'use strict';
 
 import context from "../scripts copy/context.js";
@@ -132,8 +141,10 @@ function drawbubble() {
  */
 
 function move(e) {
- 
+    // Pak de rechter rechthoek (de tweede in de array).
     let rightRectangle = rectangles[1];
+    // Zet de Y-positie van de rechthoek gelijk aan de Y-positie van de muis.
+    // We trekken de helft van de hoogte eraf zodat de muis in het midden van de paddle zit
     rightRectangle.rectY = e.clientY - rightRectangle.rectHeight / 2;
 
 }
@@ -228,4 +239,5 @@ function space(){
     // Dit is HEEL belangrijk, anders zou alles hierna ook klein en
     // in de hoek getekend worden.
     context.restore(); 
+    
 }
