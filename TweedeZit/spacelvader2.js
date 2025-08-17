@@ -1,3 +1,8 @@
+/*
+ * Oorsprong: Dit component is overgenomen uit de eerste zittijd.
+ * Reden voor opname: De code is aangepast voor hergebruik (o.a. import/export).
+ * Het is hier opnieuw opgenomen om de wijzigingen t.o.v. het origineel duidelijk te maken.
+ */
 
 function spacevader2(context) {
     
