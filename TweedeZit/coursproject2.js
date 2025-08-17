@@ -18,10 +18,11 @@ setup();
 update();
 
 function setup() {
+    // Roept de functies aan die de objecten maken en in de arrays steken.
     createRectangles();
     createBorder();
    
-
+    // Start de animatie met 2 ballen. Pas het getal '2' hieronder aan voor meer of minder.
     for (let i = 0; i < 2; i++) {
         pushbubble();
     }
@@ -30,7 +31,7 @@ function setup() {
 
 function pushbubble() {
 
-    const border = borderRectangles[0]; 
+    const border = borderRectangles[0]; // We halen het kader-object op voor de afmetingen.
     const bubbleSize = 10;
 
     const randomY = border.rectY + bubbleSize + Math.random() * (border.rectHeight - bubbleSize * 2);
@@ -131,8 +132,7 @@ function drawbubble() {
  */
 
 function move(e) {
-    // const border = borderRectangles[0]; 
-
+ 
     let rightRectangle = rectangles[1];
     rightRectangle.rectY = e.clientY - rightRectangle.rectHeight / 2;
 
@@ -147,7 +147,8 @@ function updateAndDrawRectangles() {
 
         context.fillStyle = 'darkgreen';
         context.fillRect(rect.rectX, rect.rectY, rect.rectWidth, rect.rectHeight);
-        
+           
+        // Alleen de linker paddle (index 0) beweegt automatisch.
         if (i == 0) { 
             rect.rectY += rect.rectSpeed;
 
@@ -202,6 +203,7 @@ function createLineCircleText(){
 
 }
 
+// Tekent de 'space invader' handtekening rechtsonder.
 function space(){ 
     
     context.save(); 
@@ -209,15 +211,21 @@ function space(){
     const patternTotalWidth = 350; 
     const patternTotalHeight = 350; 
     const margin = 20;
-    const scaleFactor = 0.2; 
+    const scaleFactor = 0.2; // Maak hem 20% van de originele grootte.
 
     const drawX = width - (patternTotalWidth * scaleFactor) - margin;
     const drawY = height - (patternTotalHeight * scaleFactor) - margin;
 
+    // Verplaats het 'nulpunt' (0,0) van het canvas naar de tekenlocatie.
     context.translate(drawX, drawY);
+
+    // Verklein de schaal van alles wat hierna getekend wordt.
     context.scale(scaleFactor, scaleFactor);
 
     spacevader2(context);
 
+    // Herstel de context naar de staat van vóór context.save().
+    // Dit is HEEL belangrijk, anders zou alles hierna ook klein en
+    // in de hoek getekend worden.
     context.restore(); 
 }
