@@ -220,7 +220,4 @@ function space(){
     spacevader2(context);
 
     context.restore(); 
-   
-
-
 }
