@@ -12,7 +12,6 @@ let bubbles = [];
 let rectangles = []; 
 let borderRectangles = [];
 
-//document.onmousedown = move;
 document.onmousemove = move;
 
 setup();
@@ -31,7 +30,7 @@ function setup() {
 
 function pushbubble() {
 
-    const border = borderRectangles[0]; // Haal het kader op
+    const border = borderRectangles[0]; 
     const bubbleSize = 10;
 
     const randomY = border.rectY + bubbleSize + Math.random() * (border.rectHeight - bubbleSize * 2);
@@ -204,7 +203,7 @@ function createLineCircleText(){
 }
 
 function space(){ 
-
+    
     context.save(); 
 
     const patternTotalWidth = 350; 
